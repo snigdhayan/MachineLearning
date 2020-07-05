@@ -126,7 +126,7 @@ training_time5 = time.time_ns() - start_time5
 pred = model5.predict(X_test) == Y_test
 
 statistics.loc[4] = ["SS Label Spreading", 
-                     round(100*model4.score(X_test, Y_test),2), 
+                     round(100*model5.score(X_test, Y_test),2), 
                      np.count_nonzero(pred==True), 
                      np.count_nonzero(pred==False), 
                      round(100*idxs.size/Y_train.size,2),
