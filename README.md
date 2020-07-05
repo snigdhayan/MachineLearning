@@ -1,4 +1,4 @@
-# PythonDataAnalysis
+# MachineLearningAlgorithms
 
 I tested the efficacy of semi-supervised learning using the following two approaches:
 
