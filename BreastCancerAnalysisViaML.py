@@ -50,7 +50,7 @@ training_time1 = time.time_ns() - start_time1
 pred = model1.predict(X_test) == Y_test
 
 statistics.loc[0] = ["Logistic Regression",
-                     100*model1.score(X_test, Y_test), 
+                     round(100*model1.score(X_test, Y_test),2), 
                      np.count_nonzero(pred==True),
                      np.count_nonzero(pred==False), 
                      0,
@@ -66,11 +66,27 @@ training_time2 = time.time_ns() - start_time2
 pred = model2.predict(X_test) == Y_test
 
 statistics.loc[1] = ["Support Vector Machine",
-                     100*model2.score(X_test, Y_test), 
+                     round(100*model2.score(X_test, Y_test),2), 
                      np.count_nonzero(pred==True),
                      np.count_nonzero(pred==False), 
                      0,
                      training_time2]
+
+# Train decision tree model, predict and collect statistics
+
+from sklearn import tree
+
+start_time3 = time.time_ns()
+model3 = tree.DecisionTreeClassifier().fit(X_train,Y_train)
+training_time3 = time.time_ns() - start_time3
+pred = model3.predict(X_test) == Y_test
+
+statistics.loc[2] = ["Decision Tree", 
+                     round(100*model3.score(X_test, Y_test),2), 
+                     np.count_nonzero(pred==True), 
+                     np.count_nonzero(pred==False), 
+                     0,
+                     training_time3]
 
 # Define the number of unlabeled data sets and randomly remove the labels (set them to -1)
 
@@ -88,33 +104,33 @@ Y_train = y
 
 from pomegranate import NaiveBayes, NormalDistribution
 
-start_time3 = time.time_ns()
-model3 = NaiveBayes.from_samples(NormalDistribution, X_train, Y_train, verbose=False)
-training_time3 = time.time_ns() - start_time3
-pred = model3.predict(X_test) == Y_test
+start_time4 = time.time_ns()
+model4 = NaiveBayes.from_samples(NormalDistribution, X_train, Y_train, verbose=False)
+training_time4 = time.time_ns() - start_time4
+pred = model4.predict(X_test) == Y_test
 
-statistics.loc[2] = ["SS Naive Bayes", 
-                     100*model3.score(X_test, Y_test), 
+statistics.loc[3] = ["SS Naive Bayes", 
+                     round(100*model4.score(X_test, Y_test),2), 
                      np.count_nonzero(pred==True), 
                      np.count_nonzero(pred==False), 
-                     100*idxs.size/Y_train.size,
-                     training_time3]
+                     round(100*idxs.size/Y_train.size,2),
+                     training_time4]
 
 # Train semi-supervised LabelSpreading model, predict (use 'knn' as kernel) and collect statistics
 
 from sklearn.semi_supervised import LabelSpreading
 
-start_time4 = time.time_ns()
-model4 = LabelSpreading(kernel = 'knn', n_neighbors = 10, max_iter=1000).fit(X_train, Y_train)
-training_time4 = time.time_ns() - start_time4
-pred = model4.predict(X_test) == Y_test
+start_time5 = time.time_ns()
+model5 = LabelSpreading(kernel = 'knn', n_neighbors = 10, max_iter=1000).fit(X_train, Y_train)
+training_time5 = time.time_ns() - start_time5
+pred = model5.predict(X_test) == Y_test
 
-statistics.loc[3] = ["SS Label Spreading", 
-                     100*model4.score(X_test, Y_test), 
+statistics.loc[4] = ["SS Label Spreading", 
+                     round(100*model4.score(X_test, Y_test),2), 
                      np.count_nonzero(pred==True), 
                      np.count_nonzero(pred==False), 
-                     100*idxs.size/Y_train.size,
-                     training_time4]
+                     round(100*idxs.size/Y_train.size,2),
+                     training_time5]
 
 # Print summary statistics
 
