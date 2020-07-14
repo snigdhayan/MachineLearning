@@ -77,7 +77,7 @@ statistics.loc[1] = ["Support Vector Machine",
 from sklearn import tree
 
 start_time3 = time.time_ns()
-model3 = tree.DecisionTreeClassifier().fit(X_train,Y_train)
+model3 = tree.DecisionTreeClassifier(criterion = "entropy", max_depth = 5).fit(X_train,Y_train)
 training_time3 = time.time_ns() - start_time3
 pred = model3.predict(X_test) == Y_test
 

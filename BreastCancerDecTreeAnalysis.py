@@ -37,7 +37,7 @@ X_test, Y_test = breast_dataset_test.drop(columns='label'), breast_dataset_test[
 
 from sklearn import tree
 
-model = tree.DecisionTreeClassifier().fit(X_train,Y_train)
+model = tree.DecisionTreeClassifier(criterion ="entropy", max_depth = 5).fit(X_train,Y_train)
 
 print("Percentage of correct predictions = {}".format(round(100*model.score(X_test, Y_test),2)))
 pred = model.predict(X_test) == Y_test
