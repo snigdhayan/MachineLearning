@@ -31,7 +31,7 @@ from sklearn.neighbors import LocalOutlierFactor
 model = LocalOutlierFactor(n_neighbors=100, contamination=0.1, novelty=False)
 
 
-# Compute the predicted labels of the samples and the associated time training time
+# Compute the predicted labels of the samples and the associated training time
 
 start_time = time.time_ns()
 class_pred = model.fit_predict(dataset)
