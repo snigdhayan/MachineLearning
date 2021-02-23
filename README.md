@@ -1,6 +1,6 @@
 # MachineLearning
 
-I applied various machine learing techniques to analyze the breast cancer dataset (`30 features` and roughly `550 entries`). My main interest was to ascertain the efficacy of `semi-supervised learning` based on the following two approaches:
+I applied various machine learing techniques to analyze the breast cancer dataset (`30 features` and `569 entries`). My main interest was to ascertain the efficacy of `semi-supervised learning` based on the following two approaches:
 
 1. Semi-supervised `Label Spreading` - https://scikit-learn.org/stable/modules/generated/sklearn.semi_supervised.LabelSpreading.html#sklearn.semi_supervised.LabelSpreading
 2. Semi-supervised `Naive Bayes` - https://pomegranate.readthedocs.io/en/latest/semisupervised.html
