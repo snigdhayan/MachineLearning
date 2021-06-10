@@ -10,3 +10,5 @@ All entries of the breast cancer dataset were initially labeled. Following the d
 In `CreditCardFraudDetection.py` I used the `Local Outlier Factor (LOF)` model (consult https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.LocalOutlierFactor.html#sklearn.neighbors.LocalOutlierFactor) to predict credit card fraud based on the kaggle dataset - https://www.kaggle.com/mlg-ulb/creditcardfraud?select=creditcard.csv. Using this approach I was able to achieve an accuracy above 90%.
 
 In `MPGPredictionViaGaussianProcessRegressor.py` I used the `Gaussian Process Regressor` model (consult https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html#sklearn.gaussian_process.GaussianProcessRegressor) to predict the miles per gallon (MPG) of vehicles based on a few predictor variables.
+
+In `WineClassificationViaGaussianProcessClassifier.py` I used the `Gaussian Process Classifier` model (consult https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.GaussianProcessClassifier.html#sklearn.gaussian_process.GaussianProcessClassifier) to perform wine classification based on a few predictor variables.
