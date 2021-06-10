@@ -29,13 +29,14 @@ X_test, y_test = df_test.drop(columns='mpg'), df_test['mpg']
 kernel = DotProduct() + WhiteKernel()
 gpr = GaussianProcessRegressor(kernel=kernel, random_state=7).fit(X_train, y_train)
 gpr.score(X_train, y_train)
+print("Training score = ", gpr.score(X_test, y_test))
 
 
 # Make predictions
 predictions, std_dev = gpr.predict(X_test, return_std=True)
 predictions = np.asarray(predictions)
 ground_truths = np.asarray(y_test)
-gpr.score(X_test, y_test)
+print("Validation score = ", gpr.score(X_test, y_test))
 
 
 
