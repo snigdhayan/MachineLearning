@@ -28,7 +28,7 @@ X_test, Y_test = df_test.drop(columns='Label'), df_test['Label']
 
 # Train model
 kernel = 1.0 * RBF([1.0])
-model = GaussianProcessClassifier(kernel=kernel).fit(X_train, Y_train)
+model = GaussianProcessClassifier(kernel=kernel, random_state=7).fit(X_train, Y_train)
 print("Percentage of correct predictions while training = {}".format(round(100*model.score(X_test, Y_test),2)))
 
 # Make predictions
