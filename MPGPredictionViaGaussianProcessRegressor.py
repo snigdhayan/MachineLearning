@@ -18,7 +18,7 @@ df.dropna(axis = 0, how = 'any', inplace = True)
 
 
 # Preprocess data
-split = 0.5
+split = 0.2
 df_train, df_test = train_test_split(df, test_size=split)
 
 X_train, y_train = df_train.drop(columns='mpg'), df_train['mpg']
@@ -32,7 +32,8 @@ gpr.score(X_train, y_train)
 
 
 # Make predictions
-predictions = np.asarray(gpr.predict(X_test, return_std=False))
+predictions, std_dev = gpr.predict(X_test, return_std=True)
+predictions = np.asarray(predictions)
 ground_truths = np.asarray(y_test)
 gpr.score(X_test, y_test)
 
@@ -47,6 +48,7 @@ x = range(len(predictions))
 # y-axis values 
 y1 = predictions
 plt.plot(x, y1)
+plt.fill_between(x, predictions - std_dev, predictions + std_dev, alpha=0.2, color='k')
 
 # y-axis values 
 y2 = ground_truths
@@ -63,7 +65,7 @@ plt.title(F'Ground Truth vs. Predicted Values')
 
 legends = [F'Ground Truths', 
            F'Predicted Values']
-plt.legend(legends, loc='upper left')
+plt.legend(legends, loc='upper right')
 
 plt.show()
 
