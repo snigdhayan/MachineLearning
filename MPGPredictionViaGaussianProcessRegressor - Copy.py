@@ -14,29 +14,28 @@ from sklearn.model_selection import train_test_split
 # Get data from OpenML for the prediction of MPG (miles per gallon)
 df = fetch_openml(data_id=455, as_frame=True).data
 df.dropna(axis = 0, how = 'any', inplace = True)
-# df.head(10)
 
 
 # Preprocess data
 split = 0.2
 df_train, df_test = train_test_split(df, test_size=split)
 
-X_train, y_train = df_train.drop(columns='mpg'), df_train['mpg']
-X_test, y_test = df_test.drop(columns='mpg'), df_test['mpg']
+X_train, Y_train = df_train.drop(columns='mpg'), df_train['mpg']
+X_test, Y_test = df_test.drop(columns='mpg'), df_test['mpg']
 
 
 # Train model
 kernel = DotProduct() + WhiteKernel()
-gpr = GaussianProcessRegressor(kernel=kernel, random_state=7).fit(X_train, y_train)
-gpr.score(X_train, y_train)
-print("Training score = ", gpr.score(X_test, y_test))
+gpr = GaussianProcessRegressor(kernel=kernel, random_state=7).fit(X_train, Y_train)
+gpr.score(X_train, Y_train)
+print("Training score = ", gpr.score(X_test, Y_test))
 
 
 # Make predictions
 predictions, std_dev = gpr.predict(X_test, return_std=True)
 predictions = np.asarray(predictions)
-ground_truths = np.asarray(y_test)
-print("Validation score = ", gpr.score(X_test, y_test))
+ground_truths = np.asarray(Y_test)
+print("Validation score = ", gpr.score(X_test, Y_test))
 
 
 # Visualize the results
