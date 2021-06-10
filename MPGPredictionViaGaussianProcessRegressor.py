@@ -39,7 +39,6 @@ ground_truths = np.asarray(y_test)
 print("Validation score = ", gpr.score(X_test, y_test))
 
 
-
 # Visualize the results
 plt.figure(figsize=(15, 5), dpi=80, facecolor='w', edgecolor='k')
 
@@ -62,11 +61,10 @@ plt.xlabel(F'Input')
 plt.ylabel(F'Miles per gallon (MPG)') 
 
 # Title
-plt.title(F'Ground Truth vs. Predicted Values')
+plt.title(F'Ground Truths vs. Predicted Values')
 
 legends = [F'Ground Truths', 
            F'Predicted Values']
 plt.legend(legends, loc='upper right')
 
 plt.show()
-
