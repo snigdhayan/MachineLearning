@@ -82,7 +82,7 @@ plt.xticks(fontsize=12)
 plt.yticks(fontsize=14)
 plt.xlabel(breast_cancer_dataset.columns[0],fontsize=20)
 plt.ylabel(breast_cancer_dataset.columns[1],fontsize=20)
-plt.title("Plot according to mean radius and mean area",fontsize=20)
+plt.title(F'Plot according to {breast_cancer_dataset.columns[0]} and {breast_cancer_dataset.columns[1]}',fontsize=20)
 targets = [False, True]
 legends = ['Incorrect prediction', 'Correct prediction']
 colors = ['r', 'g']
@@ -92,6 +92,7 @@ for target, color in zip(targets,colors):
                , breast_cancer_dataset.loc[indicesToKeep, breast_cancer_dataset.columns[1]], c = color, s = 50)
 
 plt.legend(legends,prop={'size': 15})
+plt.show()
 
 
 
