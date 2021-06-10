@@ -58,7 +58,7 @@ plt.plot(x, y2)
 plt.xlabel(F'Input') 
 
 # y-axis label
-plt.ylabel(F'Model Year') 
+plt.ylabel(F'Miles per gallon (MPG)') 
 
 # Title
 plt.title(F'Ground Truth vs. Predicted Values')
